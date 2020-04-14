@@ -61,7 +61,9 @@
       |
       <router-link to="/logout">Logout</router-link>
       |
-      <router-link to="/post">Post</router-link>
+      <router-link to="/posts">Posts</router-link>
+      |
+      <router-link to="/posts/new">New Post</router-link>
       |
       <router-link to="/about">About</router-link>
     </div>
