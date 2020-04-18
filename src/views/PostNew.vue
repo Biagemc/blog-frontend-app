@@ -6,20 +6,25 @@
         <ul>
           <li class="text-danger" v-for="error in errors">{{ error }}</li>
         </ul>
-        <div class="form-group">
-          <label>Title:</label>
-          <input type="text" class="form-control" v-model="newPostTitle" />
+        <div class="row">
+          <div class="form-group col-xl-5">
+            <label>Title:</label>
+            <input type="text" class="form-control" v-model="newPostTitle" />
+          </div>
         </div>
-        <div class="form-group">
-          <label>Content:</label>
-          <input type="text" class="form-control" v-model="newPostBody" />
+        <div class="row">
+          <div class="form-group col-xl-8">
+            <label for="exampleFormControlTextarea">Content</label>
+            <textarea class="form-control" id="exampleFormControlTextarea" rows="3" v-model="newPostBody"></textarea>
+          </div>
         </div>
-        <div class="form-group">
-          <label>Image:</label>
-          <input type="text" class="form-control" v-model="newPostImageUrl" />
+        <div class="row">
+          <div class="form-group col-xl-5">
+            <label>Image:</label>
+            <input type="text" class="form-control" v-model="newPostImageUrl" />
+          </div>
         </div>
-
-        <input type="submit" class="btn btn-primary" value="Submit" />
+        <input type="submit" class="btn btn-secondary" value="Submit" />
       </form>
     </div>
   </div>

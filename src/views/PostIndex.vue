@@ -11,7 +11,19 @@
   </div>
 </template>
 
-<style></style>
+<style>
+.posts,
+h1,
+h3,
+p {
+  font-family: "Crimson Text", serif;
+}
+
+.posts {
+  text-align: center;
+  padding-top: 2rem;
+}
+</style>
 
 <script>
 import axios from "axios";

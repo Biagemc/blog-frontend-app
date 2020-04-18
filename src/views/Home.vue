@@ -5,13 +5,18 @@
 </template>
 
 <style>
+.home h1 {
+  padding-top: 4rem;
+  text-align: center;
+  font-family: "Crimson Text", serif;
+}
 </style>
 
 <script>
 export default {
   data: function() {
     return {
-      message: "Welcome to Vue.js!",
+      message: "Welcome to your blog",
     };
   },
   created: function() {},

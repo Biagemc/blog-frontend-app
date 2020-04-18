@@ -7,7 +7,13 @@
   </div>
 </template>
 
-<style></style>
+<style>
+.post-show,
+h3,
+p {
+  font-family: "Crimson Text", serif;
+}
+</style>
 
 <script>
 import axios from "axios";

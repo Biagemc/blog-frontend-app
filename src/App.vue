@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark ">
       <a class="navbar-brand" href="#">letsblog</a>
       <button
         class="navbar-toggler"
@@ -77,5 +77,17 @@
 <style>
 body {
   background: url("../public/y-pattern.png");
+}
+body h1 h2 h3 li .nav {
+  font-family: "Crimson Text", serif;
+}
+
+.navbar-brand {
+  font-family: "Courgette", cursive;
+}
+
+.navbar {
+  background-color: #feaf06;
+  font-family: "Crimson Text 600", serif;
 }
 </style>
