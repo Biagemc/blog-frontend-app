@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Expand at md</a>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">letsblog</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -17,16 +17,19 @@
       <div class="collapse navbar-collapse" id="navbars">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" to="/" href="#">
+            <a class="nav-link" href="/">
               Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" to="/post" href="#">Post</a>
+            <a class="nav-link" to="/posts" href="/posts">Posts</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" to="/about" href="#" tabindex="-1" aria-disabled="true">About</a>
+            <a class="nav-link" href="/posts/new">New Post</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about" tabindex="-1" aria-disabled="true">About</a>
           </li>
           <li class="nav-item dropdown">
             <a
@@ -37,12 +40,12 @@
               aria-haspopup="true"
               aria-expanded="false"
             >
-              Dropdown
+              Account
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdown04">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <a class="dropdown-item" href="/signup">Signup</a>
+              <a class="dropdown-item" href="/login">Login</a>
+              <a class="dropdown-item" href="/logout">Logout</a>
             </div>
           </li>
         </ul>
@@ -50,9 +53,9 @@
           <input class="form-control" type="text" placeholder="Search" />
         </form>
       </div>
-    </nav> -->
+    </nav>
 
-    <div id="nav">
+    <!-- <div id="nav">
       <router-link to="/">Home</router-link>
       |
       <router-link to="/signup">Signup</router-link>
@@ -66,30 +69,13 @@
       <router-link to="/posts/new">New Post</router-link>
       |
       <router-link to="/about">About</router-link>
-    </div>
+    </div> -->
     <router-view />
   </div>
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+body {
+  background: url("../public/y-pattern.png");
 }
 </style>
