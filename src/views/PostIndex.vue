@@ -5,7 +5,9 @@
       <img v-bind:src="post.image" />
       <h3>{{ post.title }}</h3>
       <p>{{ post.body }}</p>
-      <button><router-link v-bind:to="`/posts/${post.id}`" tag="button">Show Post</router-link></button>
+      <button class="btn btn-secondary">
+        <router-link v-bind:to="`/posts/${post.id}`" tag="button">Show Post</router-link>
+      </button>
       <hr />
     </div>
   </div>
