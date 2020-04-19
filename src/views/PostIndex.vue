@@ -5,10 +5,10 @@
       <img v-bind:src="post.image" />
       <h3>{{ post.title }}</h3>
       <p>{{ post.body }}</p>
-      <button class="btn btn-secondary">
-        <router-link v-bind:to="`/posts/${post.id}`" tag="button">Show Post</router-link>
-      </button>
-      <hr />
+      <div>
+        <b-button v-bind:href="`/posts/${post.id}`">Show Post</b-button>
+      </div>
+      <hr id="breakline-posts" />
     </div>
   </div>
 </template>
@@ -24,6 +24,12 @@ p {
 .posts {
   text-align: center;
   padding-top: 2rem;
+}
+#breakline-posts {
+  border: dotted black 6px;
+  border-bottom: none;
+  width: 10%;
+  margin: 50px auto;
 }
 </style>
 

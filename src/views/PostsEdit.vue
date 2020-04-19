@@ -31,7 +31,7 @@
         </div>
         <input type="submit" class="btn btn-secondary" value="Submit" />
       </form>
-      <button v-on:click="deletePost()" class="btn btn-danger">Delete Post</button>
+      <b-button v-on:click="deletePost()" class="btn btn-danger">Delete Post</b-button>
     </div>
   </div>
 </template>

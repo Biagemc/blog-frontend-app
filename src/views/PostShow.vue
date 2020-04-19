@@ -3,9 +3,9 @@
     <img v-bind:src="post.image" />
     <h3>{{ post.title }}</h3>
     <p>{{ post.body }}</p>
-    <button>
-      <router-link v-bind:to="`/posts/${post.id}/edit`" tag="button">Edit Post</router-link>
-    </button>
+    <div>
+      <b-button v-bind:href="`/posts/${post.id}/edit`">Edit Post</b-button>
+    </div>
     <hr />
   </div>
 </template>

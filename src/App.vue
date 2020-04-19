@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand-md navbar-dark ">
+    <nav class="navbar navbar-expand-md navbar-dark">
       <a class="navbar-brand" href="#">letsblog</a>
       <button
         class="navbar-toggler"
@@ -39,9 +39,7 @@
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
-            >
-              Account
-            </a>
+            >Account</a>
             <div class="dropdown-menu" aria-labelledby="dropdown04">
               <a class="dropdown-item" href="/signup">Signup</a>
               <a class="dropdown-item" href="/login">Login</a>
@@ -69,7 +67,7 @@
       <router-link to="/posts/new">New Post</router-link>
       |
       <router-link to="/about">About</router-link>
-    </div> -->
+    </div>-->
     <router-view />
   </div>
 </template>
@@ -84,10 +82,14 @@ body h1 h2 h3 li .nav {
 
 .navbar-brand {
   font-family: "Courgette", cursive;
+
+  padding-right: 3rem;
+  padding-left: 1rem;
 }
 
 .navbar {
   background-color: #feaf06;
   font-family: "Crimson Text 600", serif;
+  font-weight: 600;
 }
 </style>
