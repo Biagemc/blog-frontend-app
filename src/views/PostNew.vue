@@ -10,12 +10,24 @@
           <div class="form-group col-xl-5">
             <label>Title:</label>
             <input type="text" class="form-control" v-model="newPostTitle" />
+            <small
+              v-if="newPostTitle.length > 20"
+              class="text-danger"
+            >Title must be a max of 20 characters</small>
           </div>
         </div>
         <div class="row">
           <div class="form-group col-xl-8">
             <label for="exampleFormControlTextarea">Content</label>
-            <textarea class="form-control" id="exampleFormControlTextarea" rows="3" v-model="newPostBody"></textarea>
+            <textarea
+              class="form-control"
+              id="exampleFormControlTextarea"
+              rows="3"
+              v-model="newPostBody"
+            ></textarea>
+            <small
+              v-if="newPostBody.length <= 300"
+            >{{ 300 - newPostBody.length}} characters remaining</small>
           </div>
         </div>
         <div class="row">
