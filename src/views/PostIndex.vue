@@ -1,7 +1,12 @@
 <template>
   <div class="posts">
     <h1>{{ message }}</h1>
-    <div v-bind:key="post.id" v-for="post in posts">
+    <div
+      v-bind:key="post.id"
+      v-for="post in posts"
+      v-on:click="currentPost = post"
+      v-bind:class="{selected: currentPost=== post}"
+    >
       <img v-bind:src="post.image" />
       <h3>{{ post.title }}</h3>
       <p>{{ post.body }}</p>
@@ -31,6 +36,11 @@ p {
   width: 10%;
   margin: 50px auto;
 }
+
+.selected {
+  background-color: grey;
+  transition: background-color 2s ease;
+}
 </style>
 
 <script>
@@ -40,6 +50,7 @@ export default {
     return {
       message: "Posts",
       posts: [],
+      currentPost: "",
     };
   },
   created: function() {
