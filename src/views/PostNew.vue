@@ -6,6 +6,7 @@
         <ul>
           <li class="text-danger" v-for="error in errors">{{ error }}</li>
         </ul>
+        <img v-if="status" v-bind:src="`https://http.cat/${status}`" />
         <div class="row">
           <div class="form-group col-xl-5">
             <label>Title:</label>
@@ -51,7 +52,7 @@ export default {
       newPostTitle: "",
       newPostBody: "",
       newPostImageUrl: "",
-      errors: [],
+      status: "",
     };
   },
   methods: {
@@ -68,6 +69,7 @@ export default {
         })
         .catch(error => {
           this.errors = error.response.data.errors;
+          this.status = error.response.status;
         });
     },
   },
