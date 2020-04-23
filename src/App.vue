@@ -17,8 +17,12 @@
       <div class="collapse navbar-collapse" id="navbars">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="/">
+            <a v-if="!isLoggedIn()" class="nav-link" href="/">
               Home
+              <span class="sr-only">(current)</span>
+            </a>
+            <a v-if="isLoggedIn()" class="nav-link" href="/">
+              Hello!
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -41,33 +45,27 @@
               aria-expanded="false"
             >Account</a>
             <div class="dropdown-menu" aria-labelledby="dropdown04">
-              <a class="dropdown-item" href="/signup">Signup</a>
-              <a class="dropdown-item" href="/login">Login</a>
-              <a class="dropdown-item" href="/logout">Logout</a>
+              <a v-if="!isLoggedIn()" class="dropdown-item" href="/signup">Signup</a>
+              <a v-if="!isLoggedIn()" class="dropdown-item" href="/login">Login</a>
+              <a v-if="isLoggedIn()" class="dropdown-item" href="/logout">Logout</a>
             </div>
           </li>
         </ul>
         <form class="form-inline my-2 my-md-0">
-          <input class="form-control" type="text" placeholder="Search" />
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Search"
+            v-model="titleFilter"
+            list="titles"
+          />
+          <datalist id="titles">
+            <option v-bind:key="post.id" v-for="post in posts">{{post.title}}</option>
+          </datalist>
         </form>
       </div>
     </nav>
 
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link>
-      |
-      <router-link to="/signup">Signup</router-link>
-      |
-      <router-link to="/login">Login</router-link>
-      |
-      <router-link to="/logout">Logout</router-link>
-      |
-      <router-link to="/posts">Posts</router-link>
-      |
-      <router-link to="/posts/new">New Post</router-link>
-      |
-      <router-link to="/about">About</router-link>
-    </div>-->
     <router-view />
   </div>
 </template>
@@ -93,3 +91,34 @@ body h1 h2 h3 li .nav {
   font-weight: 600;
 }
 </style>
+
+<script>
+import axios from "axios";
+export default {
+  data: function() {
+    return {
+      titleFilter: "",
+      posts: [],
+    };
+  },
+  created: function() {
+    axios.get("/api/posts").then(response => {
+      console.log("Success", response.data);
+      this.posts = response.data;
+    });
+  },
+  methods: {
+    isLoggedIn: function() {
+      console.log("Checking if Logged in or out...");
+      if (localStorage.getItem("jwt")) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    getUserId: function() {
+      return parseInt(localStorage.getItem("user_id", "name"));
+    },
+  },
+};
+</script>

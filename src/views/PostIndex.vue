@@ -1,18 +1,22 @@
 <template>
   <div class="posts">
     <h1>{{ message }}</h1>
+
     <div
       v-bind:key="post.id"
-      v-for="post in posts"
+      v-for="post in filterBy(posts, $parent.titleFilter, 'title')"
       v-on:click="currentPost = post"
-      v-bind:class="{selected: currentPost=== post}"
+      v-bind:class="{ selected: currentPost === post }"
+      list="titles"
     >
       <img v-bind:src="post.image" />
       <h3>{{ post.title }}</h3>
       <p>{{ post.body }}</p>
+      <p v-if="post.user_id === $parent.getUserId()">Your post</p>
       <div>
         <b-button v-bind:href="`/posts/${post.id}`">Show Post</b-button>
       </div>
+
       <hr id="breakline-posts" />
     </div>
   </div>
@@ -45,12 +49,15 @@ p {
 
 <script>
 import axios from "axios";
+import Vue2Filters from "vue2-filters";
 export default {
+  mixins: [Vue2Filters.mixin],
   data: function() {
     return {
       message: "Posts",
       posts: [],
       currentPost: "",
+      titleFilter: "",
     };
   },
   created: function() {

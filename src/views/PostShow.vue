@@ -4,7 +4,10 @@
     <h3>{{ post.title }}</h3>
     <p>{{ post.body }}</p>
     <div>
-      <b-button v-bind:href="`/posts/${post.id}/edit`">Edit Post</b-button>
+      <b-button
+        v-if="post.user_id === $parent.getUserId()"
+        v-bind:href="`/posts/${post.id}/edit`"
+      >Edit Post</b-button>
     </div>
     <hr />
   </div>
