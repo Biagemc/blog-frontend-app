@@ -1,10 +1,13 @@
 <template>
   <div class="posts">
+    <button class="btn btn-primary" v-on:click="setSortAttribute('title')">Sort by Title</button>
+    <button class="btn btn-primary" v-on:click="setSortAttribute('body')">Sort by Content</button>
+    <button class="btn btn-primary" v-on:click="setSortAttribute('id')">Sort by id</button>
     <h1>{{ message }}</h1>
 
     <div
       v-bind:key="post.id"
-      v-for="post in filterBy(posts, $parent.titleFilter, 'title')"
+      v-for="post in orderBy(filterBy(posts, titleFilter, 'title'), sortAttribute, 1)"
       v-on:click="currentPost = post"
       v-bind:class="{ selected: currentPost === post }"
       list="titles"
@@ -58,6 +61,7 @@ export default {
       posts: [],
       currentPost: "",
       titleFilter: "",
+      sortAttribute: "title",
     };
   },
   created: function() {
@@ -66,6 +70,12 @@ export default {
       this.posts = response.data;
     });
   },
-  methods: {},
+  methods: {
+    setSortAttribute: function(attribute) {
+      console.log(attribute);
+      console.log("setting sort attribute...");
+      this.sortAttribute = attribute;
+    },
+  },
 };
 </script>
