@@ -52,16 +52,7 @@
           </li>
         </ul>
         <form class="form-inline my-2 my-md-0">
-          <input
-            class="form-control"
-            type="text"
-            placeholder="Search"
-            v-model="titleFilter"
-            list="titles"
-          />
-          <datalist id="titles">
-            <option v-bind:key="post.id" v-for="post in posts">{{post.title}}</option>
-          </datalist>
+          <input class="form-control" type="text" placeholder="Search" />
         </form>
       </div>
     </nav>

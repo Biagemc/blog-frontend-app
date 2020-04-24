@@ -1,27 +1,43 @@
 <template>
   <div class="posts">
-    <button class="btn btn-primary" v-on:click="setSortAttribute('title')">Sort by Title</button>
-    <button class="btn btn-primary" v-on:click="setSortAttribute('body')">Sort by Content</button>
-    <button class="btn btn-primary" v-on:click="setSortAttribute('id')">Sort by id</button>
     <h1>{{ message }}</h1>
+    <div>
+      <p>
+        Sort your post here:
+        <input type="text" v-model="titleFilter" list="titles" />
 
-    <div
-      v-bind:key="post.id"
-      v-for="post in orderBy(filterBy(posts, titleFilter, 'title'), sortAttribute, 1)"
-      v-on:click="currentPost = post"
-      v-bind:class="{ selected: currentPost === post }"
-      list="titles"
-    >
-      <img v-bind:src="post.image" />
-      <h3>{{ post.title }}</h3>
-      <p>{{ post.body }}</p>
-      <p v-if="post.user_id === $parent.getUserId()">Your post</p>
-      <div>
-        <b-button v-bind:href="`/posts/${post.id}`">Show Post</b-button>
-      </div>
+        <datalist id="titles">
+          <option v-bind:key="post.id" v-for="post in posts">{{post.title}}</option>
+        </datalist>
 
-      <hr id="breakline-posts" />
+        <button class="btn btn-primary" v-on:click="setSortAttribute('title')">Sort by Title</button>
+        <button class="btn btn-primary" v-on:click="setSortAttribute('body')">Sort by Content</button>
+        <button class="btn btn-primary" v-on:click="setSortAttribute('id')">Sort by id</button>
+      </p>
     </div>
+    <transition-group
+      appear
+      enter-active-class="animated bounceInRight"
+      leave-active-class="animated bounceUp"
+    >
+      <div
+        v-bind:key="post.id"
+        v-for="post in orderBy(filterBy(posts, titleFilter, 'title'), sortAttribute, 1)"
+        v-on:click="currentPost = post"
+        v-bind:class="{ selected: currentPost === post }"
+        list="titles"
+      >
+        <img v-bind:src="post.image" />
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.body }}</p>
+        <p v-if="post.user_id === $parent.getUserId()">Your post</p>
+        <div>
+          <b-button v-bind:href="`/posts/${post.id}`">Show Post</b-button>
+        </div>
+
+        <hr id="breakline-posts" />
+      </div>
+    </transition-group>
   </div>
 </template>
 
