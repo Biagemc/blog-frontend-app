@@ -17,8 +17,8 @@
     </div>
     <transition-group
       appear
-      enter-active-class="animated bounceInRight"
-      leave-active-class="animated bounceUp"
+      enter-active-class="animated bounceInRight delay-1s"
+      leave-active-class="animated bounceUp delay-1s"
     >
       <div
         v-bind:key="post.id"
